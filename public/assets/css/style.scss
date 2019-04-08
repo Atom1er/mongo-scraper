@@ -1,0 +1,45 @@
+$color:(
+    primary:  #4d59fd,
+    accent: green
+);
+
+#head-background{
+    clip-path: polygon(100% 0, 0 0, 28% 100%, 100% 100%);
+    background-color: map-get($map: $color, $key: primary);
+    position: absolute;
+    top: 5%;
+    right: 0;
+    width: 50%;
+    height: 75px;
+}
+
+#header{
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    height: 75px;
+    border-bottom: solid 2px map-get($map: $color, $key: primary);
+    // .nav-view, .nav-db{
+    //     margin: 45px 0 0 200px;
+
+    //     // height: 75px;
+        
+    // }
+    #navigation-bar{
+        position: absolute;
+        top: 5%;
+        left: 0;
+        background-color: black;
+        width: 60%;
+    }
+}
+
+#logo{
+    background-image: url('../images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 4%;
+    height: 100px;
+    width: 200px;
+}
