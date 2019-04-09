@@ -17,10 +17,11 @@ module.exports = function (app, db) {
       var $ = cheerio.load(response.data);
       // var test = $(".css-4jyr1y a").children();
       // console.log(test);
-
+      var result = {};
+      var length = 0;
       $(".css-4jyr1y").each(function (i, element) {
+        length++;
         // console.log(this.text());
-        var result = {};
         result.link = "https://www.nytimes.com"+$(this)
           .children("a")
           .attr("href");
@@ -41,9 +42,13 @@ module.exports = function (app, db) {
           .catch(function (err) {
             console.log(err);
           });
+
+          // res.send(result);
+
       });
 
-      res.send(result);
+      res.send(length+" New articles added!!!");
+      console.log("we got here!");
     });
   });
 
@@ -59,9 +64,9 @@ module.exports = function (app, db) {
   });
 
   // Route for grabbing a specific Article by id, populate it with it's note
-  app.get("/articles/:id", function (req, res) {
+  app.get("/api/articles/:id", function (req, res) {
     db.Articles.findOne({ _id: req.params.id })
-      .populate("note")
+      // .populate("note")
       .then(function (dbArticle) {
         res.json(dbArticle);
       })
@@ -78,7 +83,37 @@ module.exports = function (app, db) {
     db.Notes.remove({}, function (err) {
       console.log('Notes' + err);
     });
+    res.json("Database Cleared!!!")
   });
+
+  //Saving Article
+  app.post('/api/save', function(req, res){
+    console.log(req.body._id);
+    var test = db.SavedArticle.findOne({_id: req.body._id})
+    .then(function(){
+      if(test.name === undefined){
+      db.SavedArticle.create(req.body)
+      .then(function(){
+        res.send("Article Saved!");
+      });
+    }else  if(test.name !== undefined){
+      res.send("You have already saved this articles!");
+    }
+    }); 
+    
+  });
+
+  // Grabbing Saved Article
+  app.get("/api/saved", function(req, res){
+    db.SavedArticle.find({})
+      .then(function (dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  })
+
 
   // Saving/updating an Article's associated Note
   app.post("/articles/:id", function (req, res) {

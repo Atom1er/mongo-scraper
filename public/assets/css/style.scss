@@ -16,6 +16,7 @@ $color:(
 #header{
     position: absolute;
     top: 5%;
+    left: 0;
     width: 100%;
     height: 75px;
     border-bottom: solid 2px map-get($map: $color, $key: primary);
@@ -37,6 +38,9 @@ $color:(
             clip-path: polygon(0 0, 59% 0, 100% 100%, 32% 100%);
             box-shadow: 10px -10px 5px 0px rgba(0,0,0,0.75);
         }
+        a:hover{
+            cursor: pointer;
+        }
     }
     .nav-db{
         color: map-get($map: $color, $key: primary);
@@ -49,6 +53,9 @@ $color:(
             padding: 5px 25px 0px 25px;
             clip-path: polygon(0 0, 59% 0, 100% 100%, 32% 100%);
         }
+        a:hover{
+            cursor: pointer;
+        }
     }
 }
 
@@ -58,6 +65,7 @@ $color:(
     background-repeat: no-repeat;
     // position: absolute;
     margin-top: 0;
+    // margin-left: 5px;
     height: 75px;
     width: 200px;
     z-index: -1;
@@ -68,8 +76,9 @@ $color:(
 #main-body{
     margin-top: 150px;
     #articles-view{
-        border-right: solid 2px map-get($map: $color, $key: primary);
+        border: solid 2px map-get($map: $color, $key: primary);
         padding: 0;
+
         span>h3{
             width: 100%;
             background-color: map-get($map: $color, $key: primary);
@@ -77,10 +86,17 @@ $color:(
             padding: 15px 0 15px 0;
             text-align: center;
         };
-        #articles{
+        .articles{
             margin: 15px;
             padding: 10px;
             border-bottom: solid 2px map-get($map: $color, $key: primary);
+            .save-btn, .note-btn, .delete-btn{
+                height: 40px;
+            }
         }
     }
+}
+
+#summary{
+    text-align: justify;
 }

@@ -12,6 +12,7 @@
 #header {
   position: absolute;
   top: 5%;
+  left: 0;
   width: 100%;
   height: 75px;
   border-bottom: solid 2px #4d59fd;
@@ -39,6 +40,10 @@
           box-shadow: 10px -10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
+#navigation-bar .nav-view a:hover {
+  cursor: pointer;
+}
+
 #navigation-bar .nav-db {
   color: #4d59fd;
   text-transform: uppercase;
@@ -52,6 +57,10 @@
   padding: 5px 25px 0px 25px;
   -webkit-clip-path: polygon(0 0, 59% 0, 100% 100%, 32% 100%);
           clip-path: polygon(0 0, 59% 0, 100% 100%, 32% 100%);
+}
+
+#navigation-bar .nav-db a:hover {
+  cursor: pointer;
 }
 
 #logo {
@@ -69,7 +78,7 @@
 }
 
 #main-body #articles-view {
-  border-right: solid 2px #4d59fd;
+  border: solid 2px #4d59fd;
   padding: 0;
 }
 
@@ -81,9 +90,17 @@
   text-align: center;
 }
 
-#main-body #articles-view #articles {
+#main-body #articles-view .articles {
   margin: 15px;
   padding: 10px;
   border-bottom: solid 2px #4d59fd;
+}
+
+#main-body #articles-view .articles .save-btn, #main-body #articles-view .articles .note-btn, #main-body #articles-view .articles .delete-btn {
+  height: 40px;
+}
+
+#summary {
+  text-align: justify;
 }
 /*# sourceMappingURL=style.css.map */
