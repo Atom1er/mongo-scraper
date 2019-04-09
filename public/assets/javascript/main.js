@@ -29,7 +29,7 @@ $(document).ready(function () {
     saved.on('click', function(){
         $.getJSON("/api/saved", function(data){
             articles_view.empty();
-            var head = "<span><h3>Recent Articles</h3></span>";
+            var head = "<span><h3>Saved Articles</h3></span>";
             articles_view.append(head);
             for (var i = 0; i < data.length; i++) {
                 var tittle = "<h4 id='title'>" + data[i].title + "</h4>";
